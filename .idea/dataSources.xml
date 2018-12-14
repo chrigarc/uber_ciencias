@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.cnspd.xml/Hibernate" uuid="51da2906-3967-47ea-b1e0-fd0829eec6b1">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+/home/chrigarc/Documentos/Lexa/Bases/uber_ciencias/src/main/resources/hibernate.cnspd.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://192.168.43.2\SQLEXPRESS;database=ProyectoFinal</jdbc-url>
+      <driver-properties>
+        <property name="applicationName" value="DataGrip" />
+        <property name="trustServerCertificate" value="false" />
+        <property name="encrypt" value="true" />
+        <property name="loginTimeout" value="30" />
+        <property name="hostNameInCertificate" value="*.database.windows.net" />
+        <property name="appName" value="DataGrip" />
+      </driver-properties>
+    </data-source>
+  </component>
+</project>
