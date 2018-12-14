@@ -21,7 +21,10 @@ public class PersonaDAO {
         {
             iniciaOperacion();
             lista = sesion.createQuery("from Persona").list();
-        } finally
+        }catch(Exception ex) {
+        	ex.printStackTrace();
+        }
+        finally
         {
             sesion.close();
         }

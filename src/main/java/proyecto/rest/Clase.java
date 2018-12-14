@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import proyecto.bd.Datos;
+import proyecto.utils.PersonaDAO;
 
 @Path("/clase")
 public class Clase{
@@ -25,8 +26,18 @@ public class Clase{
 	@Path("/all")
 	@Produces(MediaType.APPLICATION_JSON)
 	public String all() {
+		PersonaDAO dao = null;
+		try {
+			dao = new PersonaDAO();	
+			System.out.println(dao.obtenLista());
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		
 		
 		ArrayList<Datos> datos = new ArrayList<>();
+		datos.add(new Datos("hola","","",""));
 		datos.add(new Datos("nombre1", "primerApellido1", "segundoApellido1", "correo1@correo.com"));
 		datos.add(new Datos("nombre2", "primerApellido2", "segundoApellido2", "correo2@correo.com"));
 		datos.add(new Datos("nombre3", "primerApellido3", "segundoApellido3", "correo3@correo.com"));

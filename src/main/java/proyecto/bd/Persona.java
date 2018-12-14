@@ -2,6 +2,11 @@ package proyecto.bd;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+
+@Entity
 public class Persona implements Serializable {
 
     /**
@@ -12,6 +17,7 @@ public class Persona implements Serializable {
     private String paterno;
     private String materno;
     private int id_direccion;
+	@Id
     private String email;
     private int telefono_celular;
     private int telefino_casa;
