@@ -1,8 +1,11 @@
 package proyecto.utils;
 
-import org.hibernate.HibernateException;
+
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class HibernateUtil
 {
@@ -12,8 +15,11 @@ public class HibernateUtil
     {
         try
         {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        } catch (HibernateException he)
+        	 StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+     				.configure() // configures settings from hibernate.cfg.xml
+     				.build();
+        	 sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
+        } catch (Exception he)
         {
             System.err.println("Ocurrió un error en la inicialización de la SessionFactory: " + he);
             throw new ExceptionInInitializerError(he);
