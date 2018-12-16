@@ -1,7 +1,13 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table( name = "InformacionPersonal" )
 public class InformacionPersonal implements Serializable {
 
     /**
@@ -32,6 +38,7 @@ public class InformacionPersonal implements Serializable {
         this.id_direccion_destino = id_direccion_destino;
     }
 
+    @Id
     public String getEmail_persona() {
         return email_persona;
     }

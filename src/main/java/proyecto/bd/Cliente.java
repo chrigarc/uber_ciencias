@@ -1,7 +1,12 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table( name = "Cliente" )
 public class Cliente implements Serializable {
 
     /**
@@ -16,6 +21,7 @@ public class Cliente implements Serializable {
 
     }
 
+    @Id
     public String getEmail_cliente() {
         return email_cliente;
     }

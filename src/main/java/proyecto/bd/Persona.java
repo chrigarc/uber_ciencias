@@ -1,12 +1,17 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 
+
 @Entity
+@Table( name = "Persona" )
 public class Persona implements Serializable {
 
     /**
@@ -17,17 +22,33 @@ public class Persona implements Serializable {
     private String paterno;
     private String materno;
     private int id_direccion;
-	@Id
     private String email;
-    private int telefono_celular;
-    private int telefino_casa;
+    private String telefono_celular;
+    private String telefono_casa;
     private String rfc;
 
     public Persona(){
 
     }
+    
+    
 
-    public String getNombre() {
+    public Persona(String nombre, String paterno, String materno, int id_direccion, String email,
+			String telefono_celular, String telefono_casa, String rfc) {
+		super();
+		this.nombre = nombre;
+		this.paterno = paterno;
+		this.materno = materno;
+		this.id_direccion = id_direccion;
+		this.email = email;
+		this.telefono_celular = telefono_celular;
+		this.telefono_casa = telefono_casa;
+		this.rfc = rfc;
+	}
+
+
+
+	public String getNombre() {
         return nombre;
     }
 
@@ -59,6 +80,7 @@ public class Persona implements Serializable {
         this.id_direccion = id_direccion;
     }
 
+    @Id
     public String getEmail() {
         return email;
     }
@@ -67,20 +89,20 @@ public class Persona implements Serializable {
         this.email = email;
     }
 
-    public int getTelefono_celular() {
+    public String getTelefono_celular() {
         return telefono_celular;
     }
 
-    public void setTelefono_celular(int telefono_celular) {
+    public void setTelefono_celular(String telefono_celular) {
         this.telefono_celular = telefono_celular;
     }
 
-    public int getTelefino_casa() {
-        return telefino_casa;
+    public String getTelefono_casa() {
+        return telefono_casa;
     }
 
-    public void setTelefino_casa(int telefino_casa) {
-        this.telefino_casa = telefino_casa;
+    public void setTelefono_casa(String telefono_casa) {
+        this.telefono_casa = telefono_casa;
     }
 
     public String getRfc() {

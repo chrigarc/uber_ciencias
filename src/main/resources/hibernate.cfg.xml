@@ -9,7 +9,7 @@
 		Database Vendor -->
         <property name="hibernate.dialect">org.hibernate.dialect.SQLServer2012Dialect</property>
         <property name="hibernate.connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>        
-        <property name="hibernate.connection.url">jdbc:sqlserver://;serverName=localhost;databaseName=master</property>
+        <property name="hibernate.connection.url">jdbc:sqlserver://;serverName=localhost;databaseName=ProyectoFinal</property>
         
         <!-- SQL Server - Database UserName & Password -->
         <property name="hibernate.connection.username">fciencias</property>
@@ -23,5 +23,14 @@
         <!-- Config for Showing SQL to Console if true specified -->
         <property name="hibernate.show_sql">true</property>
         <mapping class="proyecto.bd.Persona"/>
+        <mapping class="proyecto.bd.Conductor"/>
+        <mapping class="proyecto.bd.Cliente"/>
+        <mapping class="proyecto.bd.Direccion"/>
+        <mapping class="proyecto.bd.InformacionPersonal"/>
+        <mapping class="proyecto.bd.TipoCliente"/>
+        <mapping class="proyecto.bd.Vehiculo"/>
+        <mapping class="proyecto.bd.Viaje"/>
+<!--         <mapping class="proyecto.bd.Multa"/> -->
+        <mapping class="proyecto.bd.Modelo"/>
     </session-factory>
 </hibernate-configuration>

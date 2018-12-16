@@ -1,32 +1,39 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
+@Entity
+@Table( name = "Modelo" )
 public class Modelo implements Serializable  {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = -4541088148388735177L;
-	private int id_modelo;
+	private String id_modelo;
     private Date anio;
     private String marca;
     private int cilindros;
     private int puertas;
     private String manejo;
     private String consumo;
-    private int cantidad_pasejeros;
+    private int cantidad_de_pasajeros;
 
     public Modelo(){
 
     }
 
-    public int getId_modelo() {
+    @Id
+    public String getId_modelo() {
         return id_modelo;
     }
 
-    public void setId_modelo(int id_modelo) {
+    public void setId_modelo(String id_modelo) {
         this.id_modelo = id_modelo;
     }
 
@@ -78,11 +85,11 @@ public class Modelo implements Serializable  {
         this.consumo = consumo;
     }
 
-    public int getCantidad_pasejeros() {
-        return cantidad_pasejeros;
+    public int getCantidad_de_pasajeros() {
+        return cantidad_de_pasajeros;
     }
 
-    public void setCantidad_pasejeros(int cantidad_pasejeros) {
-        this.cantidad_pasejeros = cantidad_pasejeros;
+    public void setCantidad_de_pasajeros(int cantidad_de_pasajeros) {
+        this.cantidad_de_pasajeros = cantidad_de_pasajeros;
     }
 }

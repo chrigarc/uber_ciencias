@@ -1,14 +1,22 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
+
+@Entity
+@Table( name = "Multas" )
 public class Multa implements Serializable {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = -1639285354314209139L;
+
+	private int id_multa;
 	private String email_conductor;
     private String lugar;
     private int monto;
@@ -19,7 +27,12 @@ public class Multa implements Serializable {
     public Multa(){
 
     }
-
+    
+    @Id
+    public int getId_multa() {
+    	return id_multa;
+    }
+    
     public String getEmail_conductor() {
         return email_conductor;
     }

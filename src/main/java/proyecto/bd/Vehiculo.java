@@ -1,7 +1,13 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table( name = "Vehiculo" )
 public class Vehiculo implements Serializable {
 
     /**
@@ -11,12 +17,13 @@ public class Vehiculo implements Serializable {
 	private String numero_economico;
     private int id_modelo;
     private String estado;
-    private String email;
-
+    private String email_propietario;
+    
     public Vehiculo(){
 
     }
 
+    @Id
     public String getNumero_economico() {
         return numero_economico;
     }
@@ -41,11 +48,11 @@ public class Vehiculo implements Serializable {
         this.estado = estado;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail_propietario() {
+        return email_propietario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail_propietario(String email_propietario) {
+        this.email_propietario = email_propietario;
     }
 }

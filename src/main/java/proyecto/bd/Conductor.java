@@ -1,7 +1,13 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+
+@Entity
+@Table( name = "Conductor" )
 public class Conductor implements Serializable{
 
 	/**
@@ -20,9 +26,12 @@ public class Conductor implements Serializable{
 	public String getNumero_economico() {
 		return numero_economico;
 	}
+	
 	public void setNumero_economico(String numero_economico) {
 		this.numero_economico = numero_economico;
 	}
+	
+	@Id
 	public String getEmail_conductor() {
 		return email_conductor;
 	}

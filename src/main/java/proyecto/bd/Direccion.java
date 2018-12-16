@@ -1,7 +1,14 @@
 package proyecto.bd;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import org.hibernate.annotations.GenericGenerator;
 
+@Entity
+@Table( name = "Direccion" )
 public class Direccion  implements Serializable {
 
     /**
@@ -18,8 +25,24 @@ public class Direccion  implements Serializable {
     public Direccion(){
 
     }
+    
+    
 
-    public int getId_direccion() {
+    public Direccion(String calle, String avenida, int numero, String colonia, int codigo_postal) {
+		super();
+		this.calle = calle;
+		this.avenida = avenida;
+		this.numero = numero;
+		this.colonia = colonia;
+		this.codigo_postal = codigo_postal;
+	}
+
+
+
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
+	public int getId_direccion() {
         return id_direccion;
     }
 
