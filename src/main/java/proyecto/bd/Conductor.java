@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -15,20 +17,39 @@ public class Conductor implements Serializable{
 	 */
 	private static final long serialVersionUID = -7745648183589531519L;
 	
-	private String numero_economico;
+	
 	private String email_conductor;
 	private String licencia;
+    private Persona persona;
+    private Vehiculo vehiculo;
 	
 	public Conductor() {
 		
 	}
 	
-	public String getNumero_economico() {
-		return numero_economico;
-	}
 	
-	public void setNumero_economico(String numero_economico) {
-		this.numero_economico = numero_economico;
+	@OneToOne	
+    @JoinColumn(name="numero_economico")
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+
+
+
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+
+
+
+	@OneToOne	
+    @JoinColumn(name="email_conductor")
+    public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
 	}
 	
 	@Id

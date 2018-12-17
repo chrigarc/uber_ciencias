@@ -7,9 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import org.hibernate.annotations.GenericGenerator;
-
-import org.hibernate.annotations.GenericGenerator;
-
+import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
 import java.util.Date;
 
 
@@ -24,8 +23,8 @@ public class Viaje implements Serializable {
 	
 	private int id_viaje;
 	private String email_cliente;
-    private int id_direccion_origen;
-    private int id_direccion_destino;
+    private Direccion id_direccion_origen;
+    private Direccion id_direccion_destino;
     private String email_conductor;    
     private int distancia;
     private int cantidad_personas;
@@ -36,7 +35,7 @@ public class Viaje implements Serializable {
 
     }
     
-    public Viaje(String email_cliente,int id_direccion_origen,int id_direccion_destino,int cantidad_personas) {
+    public Viaje(String email_cliente,Direccion id_direccion_origen,Direccion id_direccion_destino,int cantidad_personas) {
     	this.email_cliente=email_cliente;
     	this.id_direccion_origen=id_direccion_origen;
     	this.id_direccion_destino=id_direccion_destino;
@@ -83,19 +82,23 @@ public class Viaje implements Serializable {
         this.email_cliente = email_cliente;
     }
 
-    public int getId_direccion_origen() {
+    @OneToOne
+    @JoinColumn(name="id_direccion_origen")
+    public Direccion getId_direccion_origen() {
         return id_direccion_origen;
     }
 
-    public void setId_direccion_origen(int id_direccion_origen) {
+    public void setId_direccion_origen(Direccion id_direccion_origen) {
         this.id_direccion_origen = id_direccion_origen;
     }
 
-    public int getId_direccion_destino() {
+    @OneToOne
+    @JoinColumn(name="id_direccion_destino")
+    public Direccion getId_direccion_destino() {
         return id_direccion_destino;
     }
 
-    public void setId_direccion_destino(int id_direccion_destino) {
+    public void setId_direccion_destino(Direccion id_direccion_destino) {
         this.id_direccion_destino = id_direccion_destino;
     }
 

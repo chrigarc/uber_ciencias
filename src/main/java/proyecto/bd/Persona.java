@@ -4,11 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-
+import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table( name = "Persona" )
@@ -26,6 +23,8 @@ public class Persona implements Serializable {
     private String telefono_celular;
     private String telefono_casa;
     private String rfc;
+    
+    private Direccion direccion;
 
     public Persona(){
 
@@ -44,6 +43,19 @@ public class Persona implements Serializable {
 		this.telefono_celular = telefono_celular;
 		this.telefono_casa = telefono_casa;
 		this.rfc = rfc;
+	}
+
+
+	@OneToOne	
+    @JoinColumn(name="id_direccion")
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
 	}
 
 
@@ -72,13 +84,6 @@ public class Persona implements Serializable {
         this.materno = materno;
     }
 
-    public int getId_direccion() {
-        return id_direccion;
-    }
-
-    public void setId_direccion(int id_direccion) {
-        this.id_direccion = id_direccion;
-    }
 
     @Id
     public String getEmail() {

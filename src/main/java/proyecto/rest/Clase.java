@@ -24,14 +24,14 @@ import proyecto.bd.*;
 import proyecto.utils.HibernateUtil;
 import proyecto.utils.PersonaDAO;
 
-@Path("/clase")
+@Path("/clase") 
 public class Clase{
 	
 	/*http://localhost:8080/proyecto/app/clase/conductores*/
 	@GET
 	@Path("/conductores")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String conductores() {
+	public String conductores() {   
 	    
 	    List result = new LinkedList();
 	    try {
@@ -169,6 +169,7 @@ public class Clase{
 	    	Session session = HibernateUtil.getSessionFactory().openSession();
 	    	session.beginTransaction();
 	    	result = session.get(Cliente.class, id); 
+//	    	System.out.println(((Cliente)result).getPersona());
 	    }catch(Exception ex) {
 	    	result = ex;
 	    }
@@ -384,7 +385,9 @@ public class Clase{
 	      try {
 	        Session session = HibernateUtil.getSessionFactory().openSession();
 	        tx = session.beginTransaction();		    	
-	        Object objeto = new Viaje(email_cliente, id_direccion_origen, id_direccion_destino, cantidad_personas);
+	        Direccion origen = session.get(Direccion.class, id_direccion_origen);
+	        Direccion destino = session.get(Direccion.class, id_direccion_destino);
+	        Object objeto = new Viaje(email_cliente, origen, destino, cantidad_personas);
 	        session.save(objeto);  
 	        result = new JSONObject(objeto);
 	        //tx.rollback();

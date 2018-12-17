@@ -2,7 +2,7 @@ appProyecto.service("proyectoService", function($http){
 	return{
 		all : function(){
 			return $http({
-				url: "app/clase/all", 
+				url: "app/clase/personas", 
 				method: "GET"
 			});
 		}, 
