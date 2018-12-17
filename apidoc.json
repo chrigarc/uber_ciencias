@@ -1,0 +1,8 @@
+{
+  "name": "Bases",
+  "version": "0.1.0",
+  "description": "Api del proyecto de bases para poder probar los endpoints sin tener que implementar las vistas",
+  "title": "Proyecto de bases",
+  "url" : "http://localhost:8080/proyecto/app/clase/",
+   "sampleUrl": "http://localhost:8080/proyecto/app/clase/"
+}
