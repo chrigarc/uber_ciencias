@@ -368,6 +368,80 @@ public class Clase{
 	    return result.toString();
 	}
 
+	/*http://localhost:8080/proyecto/app/clase/multas*/
+	@GET
+	@Path("/multas")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String multas() {
+	    
+	    List result = new LinkedList();
+	    try {
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	        result = session.createQuery( "from Multa" ).list();
+	    }catch(Exception ex) {
+	    	result.add(ex.toString());
+	    }
+	    
+        JSONArray json = new JSONArray(result);
+		return json.toString();
+	}
+	
+	/*http://localhost:8080/proyecto/app/clase/multa/?id=x*/
+	@GET
+	@Path("/multa")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String multa(@QueryParam("id")int id) {
+	    
+	    Object result = "Not found";
+	    try {
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	    	Object r = session.get(Multa.class, id); 
+	    	result = r!=null?r:result;
+	    }catch(Exception ex) {
+	    	result = ex;
+	    }
+	    
+	    JSONObject json = new JSONObject(result);
+		return json.toString();
+	}
+	
+	@POST
+	@Path("/multa")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.APPLICATION_JSON)
+	public String insert_multa(
+	    @FormParam("email_conductor")String email_conductor, 
+	    @FormParam("lugar")String lugar, 
+	    @FormParam("monto")int monto, 
+	    @FormParam("infraccion")String infraccion, 
+	    @FormParam("agente")String agente)			
+	   {
+	   Object result =  new JSONObject()
+	       .put("message", "Error al guardar");
+	   Transaction tx = null;
+	    
+	      try {
+	        Session session = HibernateUtil.getSessionFactory().openSession();
+	        tx = session.beginTransaction();		    	
+	        Object objeto = new Multa(email_conductor, lugar, monto, infraccion, agente);
+	        session.save(objeto); 
+	        result = new JSONObject(objeto);
+	        //tx.rollback();
+	            tx.commit(); 
+	      }catch(Exception ex) {
+	        result = ex;
+	        ex.printStackTrace();
+	        if(tx != null) {
+	          tx.rollback();
+	        }
+	      }
+	             
+	    return result.toString();
+	}
+
+	
 	@POST
 	@Path("/pedir_viaje")
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
@@ -401,6 +475,77 @@ public class Clase{
 	      }
 	             
 	    return result.toString();
+	}
+	
+	@POST
+	@Path("/asignar_viaje")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
+	@Produces(MediaType.APPLICATION_JSON)
+	public String asignar_viaje(
+	    @FormParam("id_viaje")int id_viaje, 
+	    @FormParam("email_conductor")String email_conductor, 
+	   {
+	   Object result =  new JSONObject()
+	       .put("message", "Error al guardar");
+	   Transaction tx = null;
+	    
+	      try {
+	        Session session = HibernateUtil.getSessionFactory().openSession();
+	        tx = session.beginTransaction();		    	
+	        Viaje objeto = session.get(Viaje.class, id_viaje);	 
+	        objeto.setEmail_conductor(email_conductor);
+	        session.persist(objeto);  
+	        result = new JSONObject(objeto);
+	        //tx.rollback();
+	            tx.commit(); 
+	      }catch(Exception ex) {
+	        result = ex;
+	        ex.printStackTrace();
+	        if(tx != null) {
+	          tx.rollback();
+	        }
+	      }
+	             
+	    return result.toString();
+	}
+	
+	/*http://localhost:8080/proyecto/app/clase/viajes*/
+	@GET
+	@Path("/viajes")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String viajes() {
+	    
+	    List result = new LinkedList();
+	    try {
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	        result = session.createQuery( "from Viaje" ).list();
+	    }catch(Exception ex) {
+	    	result.add(ex.toString());
+	    }
+	    
+        JSONArray json = new JSONArray(result);
+		return json.toString();
+	}
+	
+	/*http://localhost:8080/proyecto/app/clase/multa/?id=x*/
+	@GET
+	@Path("/viaje")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String viaje(@QueryParam("id")int id) {
+	    
+	    Object result = "Not found";
+	    try {
+	    	Session session = HibernateUtil.getSessionFactory().openSession();
+	    	session.beginTransaction();
+	    	Object r = session.get(Viaje.class, id); 
+	    	result = r!=null?r:result;
+	    }catch(Exception ex) {
+	    	result = ex;
+	    }
+	    
+	    JSONObject json = new JSONObject(result);
+		return json.toString();
 	}
 	
 	/*http://localhost:8080/proyecto/app/clase/all*/

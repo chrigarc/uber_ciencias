@@ -30,7 +30,7 @@
         <mapping class="proyecto.bd.TipoCliente"/>
         <mapping class="proyecto.bd.Vehiculo"/>
         <mapping class="proyecto.bd.Viaje"/>
-<!--         <mapping class="proyecto.bd.Multa"/> -->
+        <mapping class="proyecto.bd.Multa"/>
         <mapping class="proyecto.bd.Modelo"/>
     </session-factory>
 </hibernate-configuration>

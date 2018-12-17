@@ -2,8 +2,12 @@ package proyecto.bd;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.Date;
 
 
@@ -28,7 +32,21 @@ public class Multa implements Serializable {
 
     }
     
-    @Id
+    
+    
+    public Multa(String email_conductor, String lugar, int monto, String infraccion, String agente) {
+		super();
+		this.email_conductor = email_conductor;
+		this.lugar = lugar;
+		this.monto = monto;
+		this.infraccion = infraccion;
+		this.agente = agente;
+		this.fecha = new Date();
+	}
+
+	@Id
+	@GeneratedValue(generator="increment")
+	@GenericGenerator(name="increment", strategy = "increment")
     public int getId_multa() {
     	return id_multa;
     }
